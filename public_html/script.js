@@ -1,4 +1,5 @@
-//functions
+"use strict"
+////functions
 //Function Declaration
 function greet(name) {
     console.log(`Hello${name}`);
@@ -186,7 +187,7 @@ const logger = {
 //1
         Object.keys(this).forEach(key =>
             console.log(`${key}: ${this[key]}`))
-//2 
+//2
 //        const context = this;
 //        Object.keys(this).forEach(function (key)
 //        {
@@ -279,7 +280,7 @@ const logger = {
  )
  */
 //1
-//const getData = () =>  new Promise(resolve => 
+//const getData = () =>  new Promise(resolve =>
 //        resolve([1, 1, 2, 3, 5])
 //    )
 //getData().then(data => console.log(data))
@@ -287,8 +288,8 @@ const logger = {
 const  delay = (wait = 1000) => {
     return  new Promise((resolve, reject) => {
         setTimeout(() => {
-           // resolve(console.log('ok'))
-           reject('Что-то не так')
+            // resolve(console.log('ok'))
+            reject('Что-то не так')
         }, wait)
     })
 }
@@ -307,4 +308,64 @@ async function asyncExample() {
         console.log("finally")
     }
 }
-asyncExample()
+//asyncExample()
+
+//DOM
+//
+//window.alert('1')
+const head = document.getElementById('hello')
+//console.dir(head)
+
+//console.log(head.id)//hello
+//console.log(head.textContent)//Hello, world!
+
+//head.textContent = 'Hi'
+//console.log(head.textContent)//Hi
+
+
+//head.style.textAlign = 'center'
+//setTimeout(()=>
+//      head.style.color = 'red',
+//1000)
+
+head.style.textAlign = 'center'
+setTimeout(() => addStylesTo(head), 1000)
+
+function addStylesTo(element, color = 'red', fontSize) {
+    element.style.color = color
+    if(fontSize){
+        element.style.fontSize = fontSize
+    }
+}
+
+const head2 = document.querySelector('.hello2')
+head2.style.textAlign = 'center'
+setTimeout(()=>addStylesTo(head2,'blue', '50px'),1500)
+
+//1
+//head.onclick = ()=> {
+//     if( head.style.color === 'red'){
+//        head.style.color = 'green'
+//    } else {
+//        head.style.color = 'red'
+//    }
+//}
+
+//2
+//head.addEventListener('click', ()=> {
+//     if( head.style.color === 'red'){
+//        head.style.color = 'green'
+//    } else {
+//        head.style.color = 'red'
+//    }
+//})
+
+head.addEventListener('click', (event)=> {
+    console.log(event)//mouseEvent with all 
+    console.log(event.target.getAttribute('class'))//hello1
+     if( head.style.color === 'red'){
+        head.style.color = 'green'
+    } else {
+        head.style.color = 'red'
+    }
+})
